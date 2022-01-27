@@ -6,5 +6,5 @@
 # How To Use
 - Run `printer helper`
 
-# How to run Unit Test (Mocha)
+# How to run Unit Test (Jest)
 - Run `npm run test`
