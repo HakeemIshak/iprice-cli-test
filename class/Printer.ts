@@ -1,6 +1,7 @@
 import { writeFile } from 'fs';
 
 export type Command = 'help' | '--lower' | '--upper' | '--random' | '--csv';
+const VALID_COMMAND = ['--lower', '--upper', '--random', '--csv'];
 
 export class Printer {
     
@@ -8,7 +9,7 @@ export class Printer {
     private value: string;
     public result: string;
 
-    constructor(command: Command, value: string) {
+    constructor(command: Command, value: string = "") {
 
         this.command = command;
         this.value = value;
@@ -19,7 +20,7 @@ export class Printer {
             return;
         }
 
-        if (!this.value && this.command !== 'help') {
+        if (!this.value && VALID_COMMAND.includes(this.command)) {
             console.log(`Missing value for ${command}`);
             return;
         }
@@ -61,6 +62,10 @@ export class Printer {
             --upper     - Transform string to uppercase string
             --random    - Transform string to alternate uppercase/lowercase
             --csv       - Transform string to comma seperated characters
+
+          Example usage:
+            printer --lower LOWERCASE
+            printer --csv hello world
         `;
     }
 
